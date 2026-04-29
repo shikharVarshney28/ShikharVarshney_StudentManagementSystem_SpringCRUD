@@ -10,10 +10,10 @@ import java.util.List;
 
 @Repository
 public interface studentRepository extends JpaRepository<StudentSchema, Long> {
-    @Transactional
-    void deleteByRollNo(long rollNo);
-    @Transactional
-    boolean existsByRollNo(Long rollNo);
-    @Transactional
-    StudentSchema findByRollNo(long rollNo);
+//    @Transactional
+//    void deleteByRollNo(long rollNo);
+//    @Transactional
+//    boolean existsByRollNo(Long rollNo);
+//    @Transactional
+//    StudentSchema findByRollNo(long rollNo);
 }

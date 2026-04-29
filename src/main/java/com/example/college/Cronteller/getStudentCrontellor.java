@@ -11,39 +11,34 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
-
+@CrossOrigin(origins = "http://localhost:5173/")
 @RestController
 public class getStudentCrontellor {
     @Autowired
     StudnetService studnetService;
-    @GetMapping("/getStudents")
+    @GetMapping("/students")
     public ResponseEntity<List<StudentDTO>> findStudentCrontller(){
         return ResponseEntity.ok(studnetService.fetchStudents());
     }
 
-    @GetMapping("/getStudent/{id}")
+    @GetMapping("/students/{id}")
     public ResponseEntity<StudentDTO> getStudentById(@PathVariable Long id){
         return ResponseEntity.ok(studnetService.findStudentByItsID(id));
     }
 
-    @PostMapping("/addStudent")
+    @PostMapping("/students")
     public ResponseEntity<StudentDTO>addStudent(@RequestBody StudentDTO studentDTO){
         return ResponseEntity.status(HttpStatus.CREATED).body(studnetService.addStudent(studentDTO));
     }
 
-    @DeleteMapping("/delete/{rollNo}")
-    public ResponseEntity<Void> deleteTheStudent(@PathVariable Long rollNo){
-        studnetService.delete(rollNo);
+    @DeleteMapping("/students/{id}")
+    public ResponseEntity<Void> deleteTheStudent(@PathVariable Long id){
+        studnetService.delete(id);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/update/{rollNo}")
-    public ResponseEntity<StudentDTO> update(@PathVariable long rollNo,@RequestBody StudentDTO info){
-        return ResponseEntity.ok(studnetService.update(rollNo,info));
-    }
-
-    @PatchMapping("/updateP/{rollNo}")
-    public ResponseEntity<StudentDTO> updateP(@PathVariable long rollNo,@RequestBody Map<String,Object>info){
-        return ResponseEntity.ok(studnetService.updatePartially(rollNo,info));
+    @PutMapping("/students/{id}")
+    public ResponseEntity<StudentDTO> update(@PathVariable long id,@RequestBody StudentDTO info){
+        return ResponseEntity.ok(studnetService.update(id,info));
     }
 }

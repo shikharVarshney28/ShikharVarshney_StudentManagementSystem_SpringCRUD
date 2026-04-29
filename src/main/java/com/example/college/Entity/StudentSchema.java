@@ -21,4 +21,5 @@ public class StudentSchema {
     public String name;
     public long rollNo;
     public String course;
+    public String email;
 }

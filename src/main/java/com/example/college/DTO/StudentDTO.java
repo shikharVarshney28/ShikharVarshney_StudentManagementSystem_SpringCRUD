@@ -8,7 +8,9 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StudentDTO {
+    public Long id;
     public String name;
     public String course;
     public long rollNo;
+    public String email;
 }
